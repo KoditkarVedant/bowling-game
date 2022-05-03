@@ -10,10 +10,7 @@ namespace Bowling.UnitTests.Core
         {
             var game = new BowlingGame();
 
-            for (int i = 0; i < 20; i++)
-            {
-                game.Roll(0);
-            }
+            RollZeros(20, game);
 
             Assert.Equal(0, game.GetScore());
         }
@@ -26,10 +23,7 @@ namespace Bowling.UnitTests.Core
             game.Roll(3);
             game.Roll(7);
 
-            for (int i = 2; i < 20; i++)
-            {
-                game.Roll(0);
-            }
+            RollZeros(18, game);
 
             Assert.Equal(10, game.GetScore());
         }
@@ -43,10 +37,7 @@ namespace Bowling.UnitTests.Core
             game.Roll(7);
             game.Roll(7);
 
-            for (int i = 3; i < 20; i++)
-            {
-                game.Roll(0);
-            }
+            RollZeros(17, game);
 
             Assert.Equal(24, game.GetScore());
         }
@@ -60,12 +51,17 @@ namespace Bowling.UnitTests.Core
             game.Roll(3);
             game.Roll(7);
 
-            for (int i = 3; i < 20; i++)
+            RollZeros(71, game);
+
+            Assert.Equal(30, game.GetScore());
+        }
+
+        private static void RollZeros(int times, BowlingGame game)
+        {
+            for (int i = 0; i < times; i++)
             {
                 game.Roll(0);
             }
-
-            Assert.Equal(30, game.GetScore());
         }
     }
 }
