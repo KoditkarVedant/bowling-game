@@ -18,12 +18,12 @@ namespace Bowling.Core
 
             for (int frame = 0; frame < 10; frame++)
             {
-                if (rolls[rollIndex] == 10)
+                if (IsStrike(rollIndex))
                 {
                     score += 10 + rolls[rollIndex + 1] + rolls[rollIndex + 2];
                     rollIndex += 1;
                 }
-                else if (rolls[rollIndex] + rolls[rollIndex + 1] == 10)
+                else if (IsSpare(rollIndex))
                 {
                     score += 10 + rolls[rollIndex + 2];
                     rollIndex += 2;
@@ -37,5 +37,9 @@ namespace Bowling.Core
 
             return score;
         }
+
+        private bool IsSpare(int rollIndex) => rolls[rollIndex] + rolls[rollIndex + 1] == 10;
+
+        private bool IsStrike(int rollIndex) => rolls[rollIndex] == 10;
     }
 }
