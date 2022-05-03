@@ -50,5 +50,22 @@ namespace Bowling.UnitTests.Core
 
             Assert.Equal(24, game.GetScore());
         }
+
+        [Fact]
+        public void Score_should_be_30_when_rolled_a_strike_with_a_spare()
+        {
+            var game = new BowlingGame();
+
+            game.Roll(10);
+            game.Roll(3);
+            game.Roll(7);
+
+            for (int i = 3; i < 20; i++)
+            {
+                game.Roll(0);
+            }
+
+            Assert.Equal(30, game.GetScore());
+        }
     }
 }
