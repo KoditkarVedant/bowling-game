@@ -61,19 +61,20 @@ namespace Bowling.UnitTests.Core
         {
             var game = new BowlingGame();
 
-            for (int i = 0; i < 12; i++)
-            {
-                game.Roll(10);
-            }
+            RollStrike(12, game);
 
             Assert.Equal(300, game.GetScore());
         }
 
-        private static void RollZeros(int times, BowlingGame game)
+        private static void RollZeros(int times, BowlingGame game) => Roll(0, times, game);
+
+        private static void RollStrike(int times, BowlingGame game) => Roll(10, times, game);
+
+        private static void Roll(int pins, int times, BowlingGame game)
         {
             for (int i = 0; i < times; i++)
             {
-                game.Roll(0);
+                game.Roll(pins);
             }
         }
     }
