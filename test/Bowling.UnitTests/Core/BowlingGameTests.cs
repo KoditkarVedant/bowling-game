@@ -33,5 +33,22 @@ namespace Bowling.UnitTests.Core
 
             Assert.Equal(10, game.GetScore());
         }
+
+        [Fact]
+        public void Score_should_be_17_when_rolled_one_spare_with_bonus()
+        {
+            var game = new BowlingGame();
+
+            game.Roll(3);
+            game.Roll(7);
+            game.Roll(7);
+
+            for (int i = 3; i < 20; i++)
+            {
+                game.Roll(0);
+            }
+
+            Assert.Equal(24, game.GetScore());
+        }
     }
 }
