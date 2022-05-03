@@ -56,6 +56,19 @@ namespace Bowling.UnitTests.Core
             Assert.Equal(30, game.GetScore());
         }
 
+        [Fact]
+        public void Score_should_be_300_when_rolled_12_strikes()
+        {
+            var game = new BowlingGame();
+
+            for (int i = 0; i < 12; i++)
+            {
+                game.Roll(10);
+            }
+
+            Assert.Equal(300, game.GetScore());
+        }
+
         private static void RollZeros(int times, BowlingGame game)
         {
             for (int i = 0; i < times; i++)
