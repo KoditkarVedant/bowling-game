@@ -66,6 +66,42 @@ namespace Bowling.UnitTests.Core
             Assert.Equal(300, game.GetScore());
         }
 
+        [Fact]
+        public void Score_should_be_291_when_rolled_11_strikes_and_1()
+        {
+            var game = new BowlingGame();
+
+            RollStrike(11, game);
+            game.Roll(1);
+
+            Assert.Equal(291, game.GetScore());
+        }
+
+        [Fact]
+        public void Score_should_be_266_when_rolled_9_strikes_and_8_and_1()
+        {
+            var game = new BowlingGame();
+
+            RollStrike(9, game);
+            game.Roll(8);
+            game.Roll(1);
+
+            Assert.Equal(266, game.GetScore());
+        }
+
+        [Fact]
+        public void Score_should_be_270_when_rolled_9_strikes_a_spare_and_1()
+        {
+            var game = new BowlingGame();
+
+            RollStrike(9, game);
+            game.Roll(9);
+            game.Roll(1);
+            game.Roll(1);
+
+            Assert.Equal(270, game.GetScore());
+        }
+
         private static void RollZeros(int times, BowlingGame game) => Roll(0, times, game);
 
         private static void RollStrike(int times, BowlingGame game) => Roll(10, times, game);
